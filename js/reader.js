@@ -8,9 +8,23 @@
         var StorageSetter = function(key,val){
             return localStorage.setItem(prefix + key,val);
         }
+        //获取加密后的JSON数据（Base64插件和JSONP）
+        var getBSONP = function(url,callback){
+            return $.jsonp({
+               url: url,
+               cache: true,
+               callback: "duokan_fiction_chapter",
+               success: function(result){
+                   var data = $.base64.decode(result);  //解码
+                   var json = decodeURIComponent(escape(data)); 
+                   callback(json);
+               }
+            });
+        }
         return {
-            StorageGetter:StorageGetter,
-            StorageSetter:StorageSetter
+            getBSONP: getBSONP,
+            StorageGetter: StorageGetter,
+            StorageSetter: StorageSetter
         }
     })();
     
@@ -59,15 +73,64 @@
     
     function main(){
         //应用程序入口
+        var readerModel = ReaderModel();
+        var readerUI = ReaderBaseFrame(RootContainer);
+        readerModel.init(function(data){
+            readerUI(data);
+        });
         EventHanlder();
     }
     
     function ReaderModel(){
         //数据交互
+        //获取章节列表信息
+        var Chapter_id;
+        //初始化及渲染数据
+        var init = function(UIcallback){
+            getFictionInfo(function(){
+                getCurChapterContent(Chapter_id,function(data){
+                    UIcallback && UIcallback(data);
+                });
+            })
+        }
+        var getFictionInfo = function(callback){
+            $.get("data/chapter.json",function(data){
+                //获取章节信息后的回调
+                Chapter_id = data.chapters[1].chapter_id;
+                callback && callback();
+            },"json")
+        }
+        
+        //获取章节内容
+        var getCurChapterContent = function(chapter_id,callback){
+            $.get("data/data" + chapter_id + ".json",function(data){
+                //判断服务器状态
+                if(data.result == 0){
+                    var url = data.jsonp;
+                    Util.getBSONP(url, function(data){
+                        callback && callback(data);
+                    });
+                }
+            },"json")
+        }
+        return {
+            init: init
+        }
     }
     
-    function ReaderBaseFrame(){
+    function ReaderBaseFrame(container){
         //渲染UI
+        function parseChapterData(jsonData){
+            var jsonObj = JSON.parse(jsonData);
+            var html = "<h4>" + jsonObj.t + "</h4>";
+            for(var i=0; i<jsonObj.p.length; i++){
+                html += "<p>" + jsonObj.p[i] + "</p>";
+            }
+            return html;
+        }
+        return function(data){
+            container.html(parseChapterData(data));
+        }
     }
     
     function EventHanlder(){
