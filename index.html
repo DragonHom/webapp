@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<div id="root" class="container" data-bg="1" data-night="0">
+		    <!--轻触屏幕唤出边栏的独立层-->
+		    <div class="m-artical-action">
+		        <div class="artical-action-mid" id="action-mid"></div>
+		    </div>
+		    
+		    <!--上边栏-->
+		    <div id="top-nav" class="top-nav" style="display:none">
+		        <div class="icon-back"></div>
+		        <div class="nav-title">返回书架</div>
+		    </div>
+		    <!--内容主体-->
+		    <div id="fiction_chapter_title" class=""></div>
+		    <div id="fiction_chapter_container" class="m-read-content">
+		        <h4>阿什顿大所大所多</h4>
+		        <p>
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		        </p>
+		        <p>
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		        </p>
+		        <p>
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		        </p>
+		        <p>
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		            阿斯达所大是阿斯达所大卡卡山东 爱上付高额噶啥地方卡设计费 发斯蒂芬是打飞机奥斯卡电饭煲打开附件四份上岛咖啡就是对方打飞机
+		        </p>
+		    </div>
+		    <!--翻页按钮-->
+		    <div class="m-button-bar">
+		        <ul class="u-tab">
+		            <li id="prev_button">上一章</li>
+		            <li id="next_button">下一章</li>
+		        </ul>
+		    </div>
+		    <!--唤出面板-->
+		    <div class="nav-pannel-bk font-container" style="display:none"></div>
+		    <div class="nav-pannel font-container" id="font-container" style="display:none">
+		        <div class="reader-font-size">
+		                <span>字号</span>
+		                <a href="javascript:" id="large-font" class="font-size-button">大</a>
+		                <a href="javascript:" id="small-font" class="font-size-button">小</a>
+		        </div>
+		        <div class="reader-font-bg">
+		            <span>背景</span>
+	                <a href="javascript:" data-bg="1" class="defalut"></a>
+	                <a href="javascript:" data-bg="2"></a>
+	                <a href="javascript:" data-bg="3"></a>
+	                <a href="javascript:" data-bg="4"></a>
+	                <a href="javascript:" data-bg="5"></a>
+	                <a href="javascript:" data-bg="0"></a>
+		        </div>
+		    </div>
+		    <!--下边栏-->
+		    <div class="bottom-nav-bk bottom_nav" style="display:none"></div>
+		    <div id="bottom-nav" class="bottom-nav bottom_nav" style="display:none">
+		        <div id="catalog" class="catalog">
+		            <div class="icon-catalog"></div>
+		            <div>目录</div>
+		        </div>
+		        <div id="font_btn" class="font-btn">
+		            <div class="icon-font-size"></div>
+		            <div class="icon-font-size-hlight display-none"></div>
+		            <div>字体</div>
+		        </div>
+		        <div id="day-night" class="day-night">
+		            <div class="night">
+		                <div class="icon-night"></div>
+		                <div>夜间</div>
+		            </div>
+		           <div class="day display-none">
+		                <div class="icon-day"></div>
+		                <div>白天</div>
+		           </div>
+		        </div>
+		    </div>
+		</div>
+		
+		<script src="lib/zepto.min.js"></script>
+		<script>
+			window.jQuery = $;
+		</script>
+		<script src="js/jquery.base64.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+        <script src="js/reader.js"></script>
+	</body>
+</html>

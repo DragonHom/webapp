@@ -1,0 +1,74 @@
+HTML5 WebApp阅读器开发
+HTML5 应用场景：
+
+技术分解：
+
+1. Base64格式图片制作：
+    用途：制作icon图标；
+    优势：减少图片请求，加快首屏数据显示速度；
+    缺点：维护不方便（联想CSS Sprite）
+    语法：url(data:image/png;base64,{img_data})
+
+    比较：使用CSS3制作icon,也不易维护，PC上有兼容性问题。比较适合应用于webApp，几乎零兼容。
+    CSS3适合规则icon制作，常用属性：
+        border-radius;
+        box-shadow;
+        transform;
+        
+2. HTML5 API 概述（提升性能）
+    DOM操作；
+        如节点操作QuerySelector 
+    本地数据存储；
+        localStorage.setItem()/getItem()
+    跨域通信；
+    跟硬件相关；
+    
+3. HTML5 核心API-webwork (参考MDN)
+    后台线程；
+4. HTML5特性-Ajax跨域
+    JS里面实现跨域：iframe/jsonP(不适用于POST请求)
+    XMLHttpRequest level2
+    后台可设置协议头信息实现(所有域名)跨域：
+    header("Access-Control-Allow-Origin:*");
+5. HTML5-触屏事件讲解
+6. 使用viewport布局移动端页面
+    内容宽度默认是设备宽度；
+    
+7. 移动端性能陷阱和硬件加速
+    a.减少或避免repaint,reflow 页面重绘，页面回流
+    （减少对DOM元素的操作、从DOM文档流提取DOM元素）
+    b.尽量缓存所有可以缓存的数据
+    （PC有HTTP协议缓存如Cache-Control）
+    （H5时代提供localStorage、sessionStorage、indexDB）
+    c.使用CSS3 transform代替DOM操作
+    （从浏览器引擎的底层提供的对DOM元素的位移，是一种变换操作，非新的API）
+      Animate.css库做动画
+     
+    一些极客原则：
+    a.不要给非static定位元素增加CSS3动画（增加浏览器卡增）
+    b.适当使用硬件加速（Canvas）
+    
+8.交互图和设计图的解读
+9.移动端开发技术选型
+    轻量 快速 易维护 高性能
+    复用性弱，结构简单：原生JS开发；
+    数据量小：交互性的JS放在页面；
+              类库JS适合缓存；
+10.目录结构的划分和基础文件准备说明
+11.页面结构开发过程
+    主体页面结构HTML
+    主体CSS
+    仿native上下边栏的结构和CSS开发
+    仿native下边栏操作面板的CSS开发
+
+12.前端交互开发
+    a.基本JS代码结构搭建:
+        zepto.js用法同jQ类似，在移动端上表现较出色;
+        封装H5存储；
+    b.触屏唤出上下边栏；
+    c.唤出字体面板；
+    d.字体大小设置；
+    e.背景及夜间模式切换；
+
+13.数据交互
+	JSONP跨域请求
